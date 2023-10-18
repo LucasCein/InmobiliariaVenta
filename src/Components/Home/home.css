@@ -1,7 +1,7 @@
 .overlay-content {
     position: absolute; /* Se posiciona de manera absoluta con respecto a su contenedor más cercano con posición relativa o absoluta */
-    top: 30%; /* Coloca el div en la parte superior del contenedor */
-    left: 40%; /* Coloca el div en el lado izquierdo del contenedor */
+    top: 20%; /* Coloca el div en la parte superior del contenedor */
+    left: 30%; /* Coloca el div en el lado izquierdo del contenedor */
     /* Puedes ajustar los valores de 'top' y 'left' para posicionar el div exactamente donde lo desees */
 
     /* Estilos adicionales para dar formato a tu div, botones e inputs */
@@ -10,3 +10,24 @@
     gap: 10px; /* Espacio entre los elementos */
     padding: 10px;
 }
+
+.overlay-card{
+    position: relative;
+    right: -100px;
+    width: 500px;
+    height: 250px;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.card-container{
+    margin-top: 40px;
+    background-color: #E6E9F7;
+    height: 400px;
+    width: 100%;
+}
+
+/* .card-image{
+    height: 50% !important;
+} */
