@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
     return (
@@ -19,16 +20,16 @@ const NavBar = () => {
             <div className="collapse navbar-collapse" id="navbarContent">
                 <ul className="navbar-nav mx-auto">
                     <li className="nav-item">
-                        <a className="nav-link" href="#">Home</a>
+                    <Link className="text-decoration-none" to={"/"}><a className="nav-link">Home</a></Link>
                     </li>
                     <li className="nav-item">
                         <a className="nav-link" href="#">Comprar</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#">Vender</a>
+                        <Link className="text-decoration-none" to={"/propiedades/venta"}><a className="nav-link">Vender</a></Link>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#">Alquiler</a>
+                        <Link className="text-decoration-none" to={"/propiedades/alquiler"}><a className="nav-link">Alquiler</a></Link>
                     </li>
                     <li className="nav-item">
                         <a className="nav-link" href="#">Contacto</a>

@@ -1,6 +1,7 @@
 import { BsSearch } from "react-icons/bs";
 import "./home.css";
 import ReactSelect from "react-select";
+import { useState } from "react";
 const Home = () => {
   const options = [
     { value: "departamento", label: "Departamento" },
@@ -9,7 +10,8 @@ const Home = () => {
     { value: "terrenos", label: "Terrenos y Lotes" },
     { value: "cochera", label: "Cochera" },
   ];
-
+  const [clickedButtonC, setClickedButtonC] = useState(true);
+  const [clickedButtonA, setClickedButtonA] = useState(false);
   return (
     <div className="d-flex align-items-center justify-content-center flex-column">
       <div className="w-100">
@@ -17,10 +19,10 @@ const Home = () => {
         <div className="overlay-content">
           <h1 className="text-white">Mucho más que mudarte</h1>
           <div className="d-flex gap-3 justify-content-center">
-            <button className="btn btn-light btn-lg">Quiero Comprar</button>
-            <button className="btn btn-light btn-lg">Quiero Alquilar</button>
+            <button onClick={()=>{setClickedButtonC(!clickedButtonC),setClickedButtonA(!clickedButtonA)}} className={clickedButtonC?"btn btn-primary btn-lg":"btn btn-light btn-lg"}>Quiero Comprar</button>
+            <button onClick={()=>{setClickedButtonA(!clickedButtonA),setClickedButtonC(!clickedButtonC)}} className= {clickedButtonA?"btn btn-primary btn-lg":"btn btn-light btn-lg"}>Quiero Alquilar</button>
           </div>
-          <div className="d-flex gap-1">
+          <div className="d-flex gap-2 ms-5">
             <input
               type="text"
               className="form-control"

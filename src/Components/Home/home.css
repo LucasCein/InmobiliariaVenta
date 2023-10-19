@@ -1,7 +1,7 @@
 .overlay-content {
     position: absolute; /* Se posiciona de manera absoluta con respecto a su contenedor más cercano con posición relativa o absoluta */
-    top: 20%; /* Coloca el div en la parte superior del contenedor */
-    left: 30%; /* Coloca el div en el lado izquierdo del contenedor */
+    top: 30%; /* Coloca el div en la parte superior del contenedor */
+    left: 36%; /* Coloca el div en el lado izquierdo del contenedor */
     /* Puedes ajustar los valores de 'top' y 'left' para posicionar el div exactamente donde lo desees */
 
     /* Estilos adicionales para dar formato a tu div, botones e inputs */
