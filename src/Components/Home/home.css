@@ -9,6 +9,7 @@
     flex-direction: column; /* Alinea los botones e inputs verticalmente */
     gap: 10px; /* Espacio entre los elementos */
     padding: 10px;
+    width: 550px;
 }
 
 .overlay-card{
