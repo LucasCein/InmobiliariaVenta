@@ -30,7 +30,7 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState(true)
   useEffect(() => {
     const dbFirestore = getFirestore(app)
-    const queryCollection = query(collection(dbFirestore, 'propiedades'), limit(3))
+    const queryCollection = query(collection(dbFirestore, 'propiedades'), limit(3),where('estado', '==', 'disponible'),where('visible', '==', true))
     getDocs(queryCollection)
       .then(res => setProductos(res.docs.map(producto => ({ id: producto.id, ...producto.data() }))))
       .catch(error => console.log(error))

@@ -10,8 +10,7 @@ const ItemListContainer = () => {
   const { cpd } = useParams()
   useEffect(() => {
     const dbFirestore = getFirestore(app)
-    const queryCollection = collection(dbFirestore, 'propiedades')
-
+    const queryCollection = query(collection(dbFirestore, 'propiedades'),where('estado', '==', 'disponible'),where('visible', '==', true))
     const queryCollectionFiltered = !cpd ? queryCollection : query(
       queryCollection,
       where('tipo', '==', cpd),
