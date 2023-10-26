@@ -1,0 +1,10 @@
+.fixed-card {
+    width: 300px;
+    height: 400px;
+    overflow: hidden;
+}
+
+.fixed-card .card-img {
+    height: 200px;
+    object-fit: cover;
+}
