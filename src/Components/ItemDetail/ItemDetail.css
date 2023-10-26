@@ -1,0 +1,18 @@
+.div-imagen{
+    width: 685px;
+    height: 433px;
+}
+
+.card-detail{
+    width: 685px;
+}
+
+.background-card{
+    /* background-color: #E6E9F7; */
+}
+
+.colCalendar{
+    flex: 1; /* Hace que ambas columnas tengan el mismo ancho */
+  padding: 10px; /* Puedes agregar relleno según tus preferencias */
+  border: 1px solid #ccc; /* Puedes agregar un borde para separar las columnas visualmente */
+}
