@@ -5,7 +5,6 @@ import { useParams } from 'react-router-dom'
 import ItemList from '../ItemList/ItemList'
 import { app } from '../../firebase/config'
 import SideFilters from '../SideFilters/SideFilters'
-import SpinnerProps from '../SpinnerProps/SpinnerProps'
 const ItemListContainer = () => {
   const [productos, setProductos] = useState([])
   const [isLoading, setIsLoading] = useState(true)
