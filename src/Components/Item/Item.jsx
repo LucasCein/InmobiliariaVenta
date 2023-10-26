@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import './item.css'
 const Item = ({ id, imagen, nombre, descripcion }) => {
   return (
-    <div key={id} className="card fixed-card">
+    <div key={id} className="card fixed-card mb-4">
       <img
         src={imagen ? imagen : "/defaultImage.jpg"}
         className="card-img card-img-top img-thumbnail"

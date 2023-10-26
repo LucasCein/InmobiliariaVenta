@@ -52,15 +52,17 @@ const ItemListContainer = () => {
         query(baseQuery, where('aireAcondicionado', '==', aireAcondicionado)),
         query(baseQuery, where('lavarropas', '==', lavarropas)),
         query(baseQuery, where('wifi', '==', wifi)),
-        query(baseQuery, where('pais', '==', countrySelected)),
-        query(baseQuery, where('region', '==', regionSelected))
+        
       ];
     }
 
     if (cpd) {
       queries = queries.map(q => query(q, where('tipo', '==', cpd)));
+      
     }
-
+    if(regionSelected!==""){
+      queries = queries.map(q => query(q, where('region', '==', regionSelected)));
+    }
     // Map to store unique documents
     const uniqueDocs = {};
 
