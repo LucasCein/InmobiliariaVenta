@@ -33,7 +33,8 @@ const ItemDetail = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [dateSince, setDateSince] = useState(new Date());
   const [dateTo, setDateTo] = useState(new Date());
-
+  const [email, setEmail] = useState("");
+  const [consulta, setConsulta] = useState("");
   console.log("Fecha: ", new Date());
 
   const dbFirestore = getFirestore(app);
@@ -64,7 +65,20 @@ const ItemDetail = () => {
       .catch((error) => console.log("ERROR: ", error))
       .finally(alert("FIJATE"));
   };
+  
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    addDoc(collection(dbFirestore, "consulta"), {
+      email: email,
+      consulta: consulta,
+      idPropiedad:producto.id
+    })
 
+      .catch((error) => console.log("ERROR: ", error))
+      .finally(alert("FIJATE"));
+    setConsulta("")
+    setEmail("")
+  }
   return (
     <div className="background-card">
       {isLoading ? (
@@ -109,7 +123,32 @@ const ItemDetail = () => {
                 Lavarropa: {producto.lavarropa ? "Si" : "No"}{" "}
               </MDBCardText>
               <MDBCardText>WiFi: {producto.wifi ? "Si" : "No"} </MDBCardText>
-              {producto.tipo == "venta" ? (
+              <MDBCardTitle>Contactanos</MDBCardTitle>
+              <Form onSubmit={handleSubmit}>
+                <Form.Group className="mb-3">
+                  <Form.Control
+                    type="text"
+                    className="form-control mb-3"
+                    placeholder="Ingresá tu Mail"
+                    onChange={(e) => setEmail(e.target.value)}
+                    value={email}
+                  />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                  <Form.Label>Escribí tu consulta...</Form.Label>
+                  <Form.Control
+                    as="textarea"
+                    placeholder="Ingresa tu consulta.."
+                    className="mb-3 "
+                    onChange={(e) => setConsulta(e.target.value)}
+                    value={consulta}
+                  />
+                </Form.Group>
+                <Button variant="success" type="submit" className="justify-content-end">
+                  Enviar
+                </Button>
+              </Form>
+              {/* {producto.tipo == "venta" ? (
                 <>
                   <MDBCardTitle>Contactanos</MDBCardTitle>
                   <input
@@ -158,7 +197,7 @@ const ItemDetail = () => {
                     Reservar
                   </Button>
                 </>
-              )}
+              )} */}
             </MDBCardBody>
           </MDBCard>
         </div>
