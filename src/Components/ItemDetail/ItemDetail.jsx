@@ -25,8 +25,9 @@ import {
 } from "firebase/firestore";
 import { app } from "../../firebase/config";
 
-import { useParams } from "react-router-dom";
-
+import { useNavigate, useParams } from "react-router-dom";
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 const ItemDetail = () => {
   const { id } = useParams();
   const [producto, setProducto] = useState({});
@@ -35,8 +36,9 @@ const ItemDetail = () => {
   const [dateTo, setDateTo] = useState(new Date());
   const [email, setEmail] = useState("");
   const [consulta, setConsulta] = useState("");
+  const [emailError, setEmailError] = useState('');
   console.log("Fecha: ", new Date());
-
+  const navigate=useNavigate()
   const dbFirestore = getFirestore(app);
   useEffect(() => {
     const queryCollection = query(
@@ -63,22 +65,45 @@ const ItemDetail = () => {
         console.log("REserva creada con el Id: ", res.id);
       })
       .catch((error) => console.log("ERROR: ", error))
-      .finally(alert("FIJATE"));
+   
   };
-  
+
   const handleSubmit = (e) => {
     e.preventDefault()
     addDoc(collection(dbFirestore, "consulta"), {
       email: email,
       consulta: consulta,
-      idPropiedad:producto.id
+      idPropiedad: producto.id,
+      visible: true
     })
 
       .catch((error) => console.log("ERROR: ", error))
-      .finally(alert("FIJATE"));
+   
+    const MySwal = withReactContent(Swal)
+
+    MySwal.fire({
+      title: <strong>Se ha enviado la consulta!</strong>,
+      icon: 'success',
+      
+    })
     setConsulta("")
     setEmail("")
   }
+  const validateEmail = (email) => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  };
+  const handleEmailChange = (e) => {
+    const inputEmail = e.target.value;
+    setEmail(inputEmail);
+
+    // Validar el email cada vez que cambie
+    if (validateEmail(inputEmail)) {
+      setEmailError('');
+    } else {
+      setEmailError('Por favor, ingresa un correo electrónico válido.');
+    }
+  };
   return (
     <div className="background-card">
       {isLoading ? (
@@ -130,9 +155,10 @@ const ItemDetail = () => {
                     type="text"
                     className="form-control mb-3"
                     placeholder="Ingresá tu Mail"
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={handleEmailChange}
                     value={email}
                   />
+                  {emailError && <div style={{ color: 'red' }}>{emailError}</div>}
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                   <Form.Label>Escribí tu consulta...</Form.Label>
