@@ -28,6 +28,7 @@ import { app } from "../../firebase/config";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import CustomSpinner from "../CustomSpinner/CustomSpinner";
 const ItemDetail = () => {
   const { id } = useParams();
   const [producto, setProducto] = useState({});
@@ -38,7 +39,7 @@ const ItemDetail = () => {
   const [consulta, setConsulta] = useState("");
   const [emailError, setEmailError] = useState('');
   console.log("Fecha: ", new Date());
-  const navigate=useNavigate()
+  const navigate = useNavigate()
   const dbFirestore = getFirestore(app);
   useEffect(() => {
     const queryCollection = query(
@@ -65,7 +66,7 @@ const ItemDetail = () => {
         console.log("REserva creada con el Id: ", res.id);
       })
       .catch((error) => console.log("ERROR: ", error))
-   
+
   };
 
   const handleSubmit = (e) => {
@@ -78,13 +79,13 @@ const ItemDetail = () => {
     })
 
       .catch((error) => console.log("ERROR: ", error))
-   
+
     const MySwal = withReactContent(Swal)
 
     MySwal.fire({
       title: <strong>Se ha enviado la consulta!</strong>,
       icon: 'success',
-      
+
     })
     setConsulta("")
     setEmail("")
@@ -107,7 +108,7 @@ const ItemDetail = () => {
   return (
     <div className="background-card">
       {isLoading ? (
-        <p>Cargando...</p>
+        <CustomSpinner></CustomSpinner>
       ) : (
         <div className="w-100 h-100 justify-content-center align-items-center d-flex flex-column">
           <div className="border border-dark rounded div-imagen p-0 m-0">
@@ -148,6 +149,10 @@ const ItemDetail = () => {
                 Lavarropa: {producto.lavarropa ? "Si" : "No"}{" "}
               </MDBCardText>
               <MDBCardText>WiFi: {producto.wifi ? "Si" : "No"} </MDBCardText>
+              <MDBCardText className="fw-bold"><h5 className="fw-bold">Precio: {parseInt(producto.precio).toLocaleString('en-US', {
+                style: 'currency',
+                currency: 'USD',
+              })}</h5></MDBCardText>
               <MDBCardTitle>Contactanos</MDBCardTitle>
               <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3">

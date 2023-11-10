@@ -1,13 +1,13 @@
-.overlay-content {
-    position: absolute; /* Se posiciona de manera absoluta con respecto a su contenedor más cercano con posición relativa o absoluta */
-    top: 30%; /* Coloca el div en la parte superior del contenedor */
-    left: 36%; /* Coloca el div en el lado izquierdo del contenedor */
-    /* Puedes ajustar los valores de 'top' y 'left' para posicionar el div exactamente donde lo desees */
+/* .overlay-content {
+    position: absolute; 
+    top: 30%;
+    left: 36%; 
 
-    /* Estilos adicionales para dar formato a tu div, botones e inputs */
+
+
     display: flex;
-    flex-direction: column; /* Alinea los botones e inputs verticalmente */
-    gap: 10px; /* Espacio entre los elementos */
+    flex-direction: column; 
+    gap: 10px; 
     padding: 10px;
     width: 550px;
 }
@@ -27,8 +27,37 @@
     background-color: #E6E9F7;
     height: 400px;
     width: 100%;
-}
+} */
 
 /* .card-image{
     height: 50% !important;
 } */
+
+
+.overlay-content {
+    position: absolute;
+    top: 50%; /* Centrado vertical */
+    left: 50%; /* Centrado horizontal */
+    transform: translate(-50%, -50%); /* Ajuste fino para centrar exactamente */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Alineación horizontal de los items Flex */
+    justify-content: center; /* Alineación vertical de los items Flex */
+    gap: 5px;
+    padding: 10px;
+    width: 100%; /* O un ancho específico si quieres una anchura fija */
+    max-width: 550px; /* Puede ser útil si tienes un ancho máximo */
+    text-align: center; /* Asegura que el texto dentro del div esté centrado */
+}
+
+/* Si necesitas estilos adicionales para hacer que el texto sea más legible sobre la imagen de fondo, considera lo siguiente: */
+.overlay-content h1,
+.overlay-content h3 {
+    color: white;
+    background-color: rgba(0, 0, 0, 0); /* Fondo completamente transparente */
+    /* O usa un valor muy bajo en lugar de 0 para una transparencia leve, por ejemplo, 0.1 */
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    display: inline-block;
+}

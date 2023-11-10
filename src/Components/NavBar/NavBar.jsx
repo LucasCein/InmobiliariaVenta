@@ -1,10 +1,12 @@
-import { Link } from "react-router-dom";
-
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import "./navBar.css"
 const NavBar = () => {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <a className="navbar-brand mr-auto ms-5" href="#">Logo</a>
-
+            <a className="navbar-brand mr-auto ms-5" href="/home">
+                <img src="https://png.pngtree.com/element_our/sm/20180413/sm_5ad0c062c709e.jpg" style={{ width: "60px" }} alt="Logo" />
+            </a>
             <button
                 className="navbar-toggler"
                 type="button"
@@ -16,27 +18,24 @@ const NavBar = () => {
             >
                 <span className="navbar-toggler-icon"></span>
             </button>
-
             <div className="collapse navbar-collapse" id="navbarContent">
                 <ul className="navbar-nav mx-auto">
                     <li className="nav-item">
-                        <Link className="text-decoration-none" to={"/"}><a className="nav-link">Home</a></Link>
+                        <NavLink exact className="nav-link" to="/home" activeClassName="active">Home</NavLink>
                     </li>
                     <li className="nav-item">
-                        <Link className="text-decoration-none" to={"/propiedades/venta"}><a className="nav-link">Comprar</a></Link>
-                    </li>
-
-                    <li className="nav-item">
-                        <Link className="text-decoration-none" to={"/propiedades/alquiler"}><a className="nav-link">Alquilar</a></Link>
+                        <NavLink className="nav-link" to="/propiedades/venta" activeClassName="active">Comprar</NavLink>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#">Contacto</a>
+                        <NavLink className="nav-link" to="/propiedades/alquiler" activeClassName="active">Alquilar</NavLink>
+                    </li>
+                    <li className="nav-item">
+                        <NavLink className="nav-link" to="/contacto" activeClassName="active">Contacto</NavLink>
                     </li>
                 </ul>
-                <a className="btn btn-outline-primary ml-auto me-5" href="#">Iniciar Sesión</a>
             </div>
         </nav>
     );
 }
 
-export default NavBar
+export default NavBar;

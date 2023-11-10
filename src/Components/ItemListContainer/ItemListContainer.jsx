@@ -50,7 +50,8 @@ const ItemListContainer = () => {
     const baseQuery = query(
       collection(dbFirestore, "propiedades"),
       where("estado", "==", "disponible"),
-      where("visible", "==", true)
+      where("visible", "==", true),
+      where("vendido", "==", false)
     );
 
     let queries = [baseQuery];
@@ -67,11 +68,13 @@ const ItemListContainer = () => {
     if (cpd) {
       queries = queries.map((q) => query(q, where("tipo", "==", cpd)));
     }
+    console.log(regionSelected)
     if (regionSelected !== "") {
       queries = queries.map((q) =>
         query(q, where("region", "==", regionSelected))
       );
     }
+    
     // Map to store unique documents
     const uniqueDocs = {};
 
@@ -84,6 +87,7 @@ const ItemListContainer = () => {
       }
 
       const results = Object.values(uniqueDocs);
+      console.log(results)
       setProductos(results);
       setProductosToShow(results);
       console.log(results);
@@ -105,7 +109,7 @@ const ItemListContainer = () => {
     countrySelected,
     regionSelected,
   ]);
-
+  console.log(productos)
   const filtrar = () => {
     console.log("productosToShow", productosToShow);
     console.log("productos", productos);

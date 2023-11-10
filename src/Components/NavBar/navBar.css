@@ -1,0 +1,15 @@
+/* home.css */
+.active {
+    position: relative;
+}
+
+.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -5px; /* Ajuste según la altura de la barra de navegación */
+    height: 2px; /* Grosor del subrayado */
+    background-color: black; /* Color del subrayado */
+    width: 100%; /* Ancho del subrayado */
+}

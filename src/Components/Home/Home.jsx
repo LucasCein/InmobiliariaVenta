@@ -30,7 +30,7 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState(true)
   useEffect(() => {
     const dbFirestore = getFirestore(app)
-    const queryCollection = query(collection(dbFirestore, 'propiedades'), limit(3),where('estado', '==', 'disponible'),where('visible', '==', true))
+    const queryCollection = query(collection(dbFirestore, 'propiedades'), limit(3),where('estado', '==', 'disponible'),where('visible', '==', true),where('vendido', '==', false))
     getDocs(queryCollection)
       .then(res => setProductos(res.docs.map(producto => ({ id: producto.id, ...producto.data() }))))
       .catch(error => console.log(error))
@@ -42,28 +42,8 @@ const Home = () => {
       <div className="w-100">
         <img className="w-100 d-block" src="bg-home.jpg" alt="" />
         <div className="overlay-content">
-          <h1 className="text-white">Mucho más que mudarte</h1>
-          <div className="d-flex gap-3 justify-content-center">
-            <button onClick={() => { setClickedButtonC(!clickedButtonC), setClickedButtonA(!clickedButtonA) }} className={clickedButtonC ? "btn btn-primary btn-lg" : "btn btn-light btn-lg"}>Quiero Comprar</button>
-            <button onClick={() => { setClickedButtonA(!clickedButtonA), setClickedButtonC(!clickedButtonC) }} className={clickedButtonA ? "btn btn-primary btn-lg" : "btn btn-light btn-lg"}>Quiero Alquilar</button>
-          </div>
-          <div className="d-flex gap-1 ms-5 pe-2 ps-1">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Escribe aquí"
-            />
-            <ReactSelect
-              isMulti
-              name="properties"
-              options={options}
-              className="basic-multi-select w-100 ms-2"
-              classNamePrefix="select"
-            />
-            <button className="btn btn-primary ms-2">
-              <BsSearch></BsSearch>
-            </button>
-          </div>
+          <h1 className="text-white fw-bold">Mucho más que mudarte</h1>
+          <h3 className="text-white">Tenemos tu próximo hogar</h3>
         </div>
       </div>
       <div className="d-flex flex-row align-items-center card-container">
