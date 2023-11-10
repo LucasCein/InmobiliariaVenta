@@ -24,13 +24,13 @@ const ItemListContainer = () => {
   const [applyFilters, setApplyFilters] = useState(false);
   const [isLoadingFilters, setIsLoadingFilters] = useState(false);
   const { cpd } = useParams();
-  console.log("estacionamiento", estacionamiento);
+  /* console.log("estacionamiento", estacionamiento);
   console.log("aireAcondicionado", aireAcondicionado);
   console.log("lavarropas", lavarropas);
   console.log("wifi", wifi);
   console.log("filter", applyFilters);
   console.log("pais", countrySelected);
-  console.log("region", regionSelected);
+  console.log("region", regionSelected); */
   // useEffect(() => {
   //   const dbFirestore = getFirestore(app)
   //   const queryCollection = query(collection(dbFirestore, 'propiedades'), where('estado', '==', 'disponible'), where('visible', '==', true))
@@ -68,7 +68,7 @@ const ItemListContainer = () => {
     if (cpd) {
       queries = queries.map((q) => query(q, where("tipo", "==", cpd)));
     }
-    console.log('render')
+    console.log("render");
     // if (regionSelected !== "") {
     //   queries = queries.map((q) =>
     //     query(q, where("region", "==", regionSelected))
@@ -87,11 +87,10 @@ const ItemListContainer = () => {
       }
 
       const results = Object.values(uniqueDocs);
-      console.log(results)
+      /* console.log(results); */
       setProductos(results);
       setProductosToShow(results);
-      console.log(results);
-
+      /* console.log(results); */
     };
 
     fetchDocs()
@@ -110,19 +109,13 @@ const ItemListContainer = () => {
     countrySelected,
     regionSelected,
   ]);
-  console.log(productos)
   const filtrar = () => {
-    console.log("productosToShow", productosToShow);
-    console.log("productos", productos);
     if (aireAcondicionado) {
       const productosFiltered = productos.filter((p) => p.aire == true);
       setProductosToShow(productosFiltered);
-      console.log("productosFiltered", productosFiltered);
     }
     if (lavarropas) {
-      const productosFiltered = productos.filter(
-        (p) => p.lavarropa == true
-      );
+      const productosFiltered = productos.filter((p) => p.lavarropa == true);
       setProductosToShow(productosFiltered);
     }
     if (estacionamiento) {
@@ -135,23 +128,26 @@ const ItemListContainer = () => {
       const productosFiltered = productos.filter((p) => p.wifi == true);
       setProductosToShow(productosFiltered);
     }
-    // if (countrySelected != "") {
-    //   const productosFiltered = productosToShow.filter(
-    //     (p) => p.pais == countrySelected
-    //   );
-    //   setProductosToShow(productosFiltered);
-    // }
-    console.log("regionr", regionSelected);
+    if (countrySelected != "") {
+      console.log("QWEQWEEQ");
+      const productosFiltered = productos.filter(
+        (p) => p.pais == countrySelected
+      );
+      console.log("FILTROAD PAIS", productosFiltered);
+      setProductosToShow(productosFiltered);
+    }
+
     if (regionSelected != "") {
       const productosFiltered = productos.filter(
         (p) => p.region == regionSelected
       );
-      console.log(productosFiltered)
       setProductosToShow(productosFiltered);
     }
+
+    console.log("productosToShow ASSSS", productosToShow);
+    console.log("productos ASSSSS", productos);
   };
-  console.log('productos',productos)
-  console.log('prodsToShow',productosToShow)
+
   return (
     <section>
       {isLoading ? (
