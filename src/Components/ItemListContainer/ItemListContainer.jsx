@@ -56,25 +56,25 @@ const ItemListContainer = () => {
 
     let queries = [baseQuery];
 
-    if (applyFilters) {
-      queries = [
-        query(baseQuery, where("estacionamiento", "==", estacionamiento)),
-        query(baseQuery, where("aireAcondicionado", "==", aireAcondicionado)),
-        query(baseQuery, where("lavarropas", "==", lavarropas)),
-        query(baseQuery, where("wifi", "==", wifi)),
-      ];
-    }
+    // if (applyFilters) {
+    //   queries = [
+    //     query(baseQuery, where("estacionamiento", "==", estacionamiento)),
+    //     query(baseQuery, where("aireAcondicionado", "==", aireAcondicionado)),
+    //     query(baseQuery, where("lavarropas", "==", lavarropas)),
+    //     query(baseQuery, where("wifi", "==", wifi)),
+    //   ];
+    // }
 
     if (cpd) {
       queries = queries.map((q) => query(q, where("tipo", "==", cpd)));
     }
-    console.log(regionSelected)
-    if (regionSelected !== "") {
-      queries = queries.map((q) =>
-        query(q, where("region", "==", regionSelected))
-      );
-    }
-    
+    console.log('render')
+    // if (regionSelected !== "") {
+    //   queries = queries.map((q) =>
+    //     query(q, where("region", "==", regionSelected))
+    //   );
+    // }
+
     // Map to store unique documents
     const uniqueDocs = {};
 
@@ -91,6 +91,7 @@ const ItemListContainer = () => {
       setProductos(results);
       setProductosToShow(results);
       console.log(results);
+
     };
 
     fetchDocs()
@@ -114,41 +115,43 @@ const ItemListContainer = () => {
     console.log("productosToShow", productosToShow);
     console.log("productos", productos);
     if (aireAcondicionado) {
-      const productosFiltered = productosToShow.filter((p) => p.aire == true);
+      const productosFiltered = productos.filter((p) => p.aire == true);
       setProductosToShow(productosFiltered);
       console.log("productosFiltered", productosFiltered);
     }
     if (lavarropas) {
-      const productosFiltered = productosToShow.filter(
+      const productosFiltered = productos.filter(
         (p) => p.lavarropa == true
       );
       setProductosToShow(productosFiltered);
     }
     if (estacionamiento) {
-      const productosFiltered = productosToShow.filter(
+      const productosFiltered = productos.filter(
         (p) => p.estacionamiento == true
       );
       setProductosToShow(productosFiltered);
     }
     if (wifi) {
-      const productosFiltered = productosToShow.filter((p) => p.wifi == true);
+      const productosFiltered = productos.filter((p) => p.wifi == true);
       setProductosToShow(productosFiltered);
     }
-    if (countrySelected != "") {
-      const productosFiltered = productosToShow.filter(
-        (p) => p.pais == countrySelected
-      );
-      setProductosToShow(productosFiltered);
-    }
+    // if (countrySelected != "") {
+    //   const productosFiltered = productosToShow.filter(
+    //     (p) => p.pais == countrySelected
+    //   );
+    //   setProductosToShow(productosFiltered);
+    // }
     console.log("regionr", regionSelected);
     if (regionSelected != "") {
-      const productosFiltered = productosToShow.filter(
+      const productosFiltered = productos.filter(
         (p) => p.region == regionSelected
       );
+      console.log(productosFiltered)
       setProductosToShow(productosFiltered);
     }
   };
-
+  console.log('productos',productos)
+  console.log('prodsToShow',productosToShow)
   return (
     <section>
       {isLoading ? (

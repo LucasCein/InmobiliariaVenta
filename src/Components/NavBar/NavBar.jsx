@@ -29,9 +29,7 @@ const NavBar = () => {
                     <li className="nav-item">
                         <NavLink className="nav-link" to="/propiedades/alquiler" activeClassName="active">Alquilar</NavLink>
                     </li>
-                    <li className="nav-item">
-                        <NavLink className="nav-link" to="/contacto" activeClassName="active">Contacto</NavLink>
-                    </li>
+                    
                 </ul>
             </div>
         </nav>

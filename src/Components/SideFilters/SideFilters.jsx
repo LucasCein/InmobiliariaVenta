@@ -21,6 +21,7 @@ const SideFilters = ({
     setCountrySelected(val);
   };
   const handleRegionChange = (val) => {
+    console.log("regions",val)
     setRegionSelected(val);
   };
   const deleteFilters = () => {
@@ -97,14 +98,14 @@ const SideFilters = ({
         ></FormCheck>
       </div>
       <div className="d-flex gap-3">
-        <Button
+        {/* <Button
           className="mt-3 mb-3"
           onClick={() => {
             setApplyFilters(true), setIsLoadingFilters(true);
           }}
         >
           Aplicar
-        </Button>
+        </Button> */}
         <Button
           className="mt-3 mb-3"
           variant="danger"

@@ -48,8 +48,8 @@ const Home = () => {
       </div>
       <div className="d-flex flex-row align-items-center card-container">
         <div className="d-flex align-items-center justify-content-center flex-column overlay-card">
-          <h2 className="text-primary">Sumate a Remax</h2>
-          <p className="text-center">
+          <h2 className="text-primary">Sumate a Propar</h2>
+          <p className="text-center m-4">
             En nuestra inmobiliaria, ofrecemos un servicio excepcional y
             personalizado para cada cliente. Nuestro equipo de agentes altamente
             capacitados trabaja incansablemente para garantizar que cada cliente
